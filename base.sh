@@ -34,10 +34,6 @@ Exec=/home/lalith/.dwm/autostart
 Type=Application
 EOF
 
-systemctl enable NetworkManager
-systemctl enable bluetooth
-systemctl enable fstrim.timer
-
 sudo -i -u lalith bash << EOF
 git clone https://github.com/jordanator/dotfiles.git /home/lalith/.dotfiles
 cd ~/.dotfiles && stow */
@@ -65,6 +61,9 @@ sed -i '155s/^/\/\*/' ~/.local/src/pasystray/src/ui.c
 sed -i '160s/$/\*\//' ~/.local/src/pasystray/src/ui.c
 cd ~/.local/src/pasystray && ./bootstrap.sh && ./configure && make && sudo make install
 EOF
+systemctl enable NetworkManager
+systemctl enable bluetooth
+systemctl enable fstrim.timer
 
 printf "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"
 
