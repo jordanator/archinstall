@@ -13,12 +13,12 @@ echo "127.0.1.1 msi.localdomain msi" >> /etc/hosts
 echo "Enter root password"
 passwd
 
-pacman -S git stow grub efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools base-devel linux-headers bluez bluez-utils alsa-utils openssh rsync os-prober ntfs-3g terminus-font imlib2
+pacman -S stow grub efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools base-devel linux-headers bluez bluez-utils alsa-utils openssh rsync os-prober ntfs-3g terminus-font imlib2
 
 pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
 
-grub-install --target=x86_64-efi --efi-directory=/boot/ --bootloader-id=ArchLinux
-grub-mkconfig -o /boot/grub/grub.cfg
+# grub-install --target=x86_64-efi --efi-directory=/boot/ --bootloader-id=ArchLinux
+# grub-mkconfig -o /boot/grub/grub.cfg
 
 useradd -m -g wheel lalith
 echo "Enter user password"
