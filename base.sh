@@ -44,12 +44,12 @@ cd ~/.dotfiles && stow */
 
 mkdir -p ~/.local/src && cd "$_"
 
-git clone https://aur.archlinux.org/yay.git
-git clone https://github.com/jordanator/st.git
-git clone https://github.com/jordanator/chadwm.git
-git clone https://github.com/jordanator/dmenu.git
-git clone https://github.com/christophgysin/pasystray.git
-git clone https://github.com/neovim/neovim.git
+git clone https://aur.archlinux.org/yay.git ~/.local/src/yay
+git clone https://github.com/jordanator/st.git ~/.local/src/st
+git clone https://github.com/jordanator/chadwm.git ~/.local/src/chadwn
+git clone https://github.com/jordanator/dmenu.git ~/.local/src/dmenu
+git clone https://github.com/christophgysin/pasystray.git ~/.local/src/dmenu
+git clone https://github.com/neovim/neovim.git ~/.local/src/neovim
 
 cd ~/.local/src/yay && makepkg -si
 
