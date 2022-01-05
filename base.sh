@@ -49,18 +49,19 @@ git clone https://github.com/neovim/neovim.git /home/lalith/.local/src/neovim
 
 cd /home/lalith/.local/src/yay; makepkg -si
 
-yay -S - /home/lalith/pacman.list --answerdiff=None --answerclean=None --noconfirm
+yay -S - < /home/lalith/pacman.list --answerdiff=None --answerclean=None --noconfirm
 
-cd /home/lalith/.local/src/st && git checkout lalith && sudo make install
-cd /home/lalith/.local/src/dmenu && sudo make clean install
+cd /home/lalith/.local/src/st; git checkout lalith; sudo make install
+cd /home/lalith/.local/src/dmenu; sudo make clean install
 
-cd /home/lalith/.local/src/chadwm && git checkout lalith && cd /home/lalith/.local/src/chadwm/chadwm && sudo make install
+cd /home/lalith/.local/src/chadwm; git checkout lalith; cd chadwm; sudo make install
 ln -s /home/lalith/.local/src/chadwm/.dwm /home/lalith
 
 sed -i '155s/^/\/\*/' /home/lalith/.local/src/pasystray/src/ui.c
-sed -i '160s/$/\*\//' /home/lalith/.local/src/pasystray/src/ui.c
-cd /home/lalith/.local/src/pasystray && ./bootstrap.sh && ./configure && make && sudo make install
+sed -i '161s/$/\*\//' /home/lalith/.local/src/pasystray/src/ui.c
+cd /home/lalith/.local/src/pasystray; ./bootstrap.sh; ./configure; make; sudo make install
 EOF
+
 systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable fstrim.timer
