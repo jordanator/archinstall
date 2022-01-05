@@ -13,9 +13,7 @@ echo "127.0.1.1 msi.localdomain msi" >> /etc/hosts
 echo "Enter root password"
 passwd
 
-pacman -S stow grub efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools base-devel linux-headers bluez bluez-utils alsa-utils openssh rsync os-prober ntfs-3g terminus-font imlib2
-
-pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
+pacman -S stow grub efibootmgr base-devel linux-headers terminus-font imlib2
 
 # grub-install --target=x86_64-efi --efi-directory=/boot/ --bootloader-id=ArchLinux
 # grub-mkconfig -o /boot/grub/grub.cfg
@@ -40,7 +38,7 @@ systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable fstrim.timer
 
-su lalith
+sudo -i -u lalith bash << EOF
 cd ~
 git clone https://github.com/jordanator/dotfiles.git .dotfiles
 cd .dotfiles && stow */
@@ -67,6 +65,7 @@ ln -s ~/.local/src/chadwm/.dwm ~
 sed -i '155s/^/\/\*/' ~/.local/src/pasystray/src/ui.c
 sed -i '160s/$/\*\//' ~/.local/src/pasystray/src/ui.c
 cd ~/.local/src/pasystray && ./bootstrap.sh && ./configure && make && sudo make install
+EOF
 
 printf "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"
 
