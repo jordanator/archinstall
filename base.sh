@@ -39,9 +39,8 @@ systemctl enable bluetooth
 systemctl enable fstrim.timer
 
 sudo -i -u lalith bash << EOF
-cd ~
-git clone https://github.com/jordanator/dotfiles.git .dotfiles
-cd .dotfiles && stow */
+git clone https://github.com/jordanator/dotfiles.git /home/lalith/.dotfiles
+cd ~/.dotfiles && stow */
 
 mkdir -p ~/.local/src && cd "$_"
 
