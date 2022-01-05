@@ -44,10 +44,10 @@ git clone https://aur.archlinux.org/yay.git /home/lalith/.local/src/yay
 git clone https://github.com/jordanator/st.git /home/lalith/.local/src/st
 git clone https://github.com/jordanator/chadwm.git /home/lalith/.local/src/chadwn
 git clone https://github.com/jordanator/dmenu.git /home/lalith/.local/src/dmenu
-git clone https://github.com/christophgysin/pasystray.git /home/lalith/.local/src/dmenu
+git clone https://github.com/christophgysin/pasystray.git /home/lalith/.local/src/pasystray
 git clone https://github.com/neovim/neovim.git /home/lalith/.local/src/neovim
 
-cd /home/lalith.local/src/yay; makepkg -si
+cd /home/lalith/.local/src/yay; makepkg -si
 
 yay -S - /home/lalith/pacman.list --answerdiff=None --answerclean=None --noconfirm
 
