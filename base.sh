@@ -36,30 +36,30 @@ EOF
 
 sudo -i -u lalith bash << EOF
 git clone https://github.com/jordanator/dotfiles.git /home/lalith/.dotfiles
-cd ~/.dotfiles && stow */
+cd /home/lalith/.dotfiles && stow */
 
-mkdir -p ~/.local/src && cd "$_"
+mkdir -p /home/lalith/.local/src && cd "$_"
 
-git clone https://aur.archlinux.org/yay.git ~/.local/src/yay
-git clone https://github.com/jordanator/st.git ~/.local/src/st
-git clone https://github.com/jordanator/chadwm.git ~/.local/src/chadwn
-git clone https://github.com/jordanator/dmenu.git ~/.local/src/dmenu
-git clone https://github.com/christophgysin/pasystray.git ~/.local/src/dmenu
-git clone https://github.com/neovim/neovim.git ~/.local/src/neovim
+git clone https://aur.archlinux.org/yay.git /home/lalith/.local/src/yay
+git clone https://github.com/jordanator/st.git /home/lalith/.local/src/st
+git clone https://github.com/jordanator/chadwm.git /home/lalith/.local/src/chadwn
+git clone https://github.com/jordanator/dmenu.git /home/lalith/.local/src/dmenu
+git clone https://github.com/christophgysin/pasystray.git /home/lalith/.local/src/dmenu
+git clone https://github.com/neovim/neovim.git /home/lalith/.local/src/neovim
 
-cd ~/.local/src/yay && makepkg -si
+cd /home/lalith.local/src/yay; makepkg -si
 
-yay -S - ~/pacman.list --answerdiff=None --answerclean=None --noconfirm
+yay -S - /home/lalith/pacman.list --answerdiff=None --answerclean=None --noconfirm
 
-cd ~/.local/src/st && git checkout lalith && sudo make install
-cd ~/.local/src/dmenu && sudo make clean install
+cd /home/lalith/.local/src/st && git checkout lalith && sudo make install
+cd /home/lalith/.local/src/dmenu && sudo make clean install
 
-cd ~/.local/src/chadwm && git checkout lalith && cd ~/.local/src/chadwm/chadwm && sudo make install
-ln -s ~/.local/src/chadwm/.dwm ~
+cd /home/lalith/.local/src/chadwm && git checkout lalith && cd /home/lalith/.local/src/chadwm/chadwm && sudo make install
+ln -s /home/lalith/.local/src/chadwm/.dwm /home/lalith
 
-sed -i '155s/^/\/\*/' ~/.local/src/pasystray/src/ui.c
-sed -i '160s/$/\*\//' ~/.local/src/pasystray/src/ui.c
-cd ~/.local/src/pasystray && ./bootstrap.sh && ./configure && make && sudo make install
+sed -i '155s/^/\/\*/' /home/lalith/.local/src/pasystray/src/ui.c
+sed -i '160s/$/\*\//' /home/lalith/.local/src/pasystray/src/ui.c
+cd /home/lalith/.local/src/pasystray && ./bootstrap.sh && ./configure && make && sudo make install
 EOF
 systemctl enable NetworkManager
 systemctl enable bluetooth
