@@ -13,7 +13,7 @@ echo "127.0.1.1 msi.localdomain msi" >> /etc/hosts
 echo "Enter root password"
 passwd
 
-pacman -S stow grub efibootmgr base-devel linux-headers terminus-font imlib2
+pacman -S stow wget grub efibootmgr base-devel linux-headers terminus-font imlib2
 
 # grub-install --target=x86_64-efi --efi-directory=/boot/ --bootloader-id=ArchLinux
 # grub-mkconfig -o /boot/grub/grub.cfg
@@ -36,13 +36,14 @@ EOF
 
 sudo -i -u lalith bash << EOF
 git clone https://github.com/jordanator/dotfiles.git /home/lalith/.dotfiles
-cd /home/lalith/.dotfiles && stow */
+cd /home/lalith/.dotfiles; stow */
 
-mkdir -p /home/lalith/.local/src && cd "$_"
+cd /home/lalith; wget https://github.com/Jguer/yay/releases/download/v11.1.0/yay_11.1.0_x86_64.tar.gz; tar xzvf yay_11.1.0_x86_64.tar.gz; rm yay_11.1.0_x86_64.tar.gz
+cd /home/lalith/yay_11.1.0_x86_64; ./yay -Sy yay-bin; cd /home/lalith; rm -rf yay_11.0_x86_64
 
-git clone https://aur.archlinux.org/yay.git /home/lalith/.local/src/yay
-cd /home/lalith/.local/src/yay; makepkg -si
 yay -S - < /home/lalith/pacman.list --answerdiff=None --answerclean=None --noconfirm
+
+mkdir -p /home/lalith/.local/src; cd "$_"
 
 git clone https://github.com/jordanator/st.git /home/lalith/.local/src/st
 cd /home/lalith/.local/src/st; git remote set-url origin git@github.com:jordanator/st.git; git checkout lalith; sudo make install
